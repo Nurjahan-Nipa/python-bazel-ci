@@ -5,8 +5,11 @@ py_library(
     visibility = ["//visibility:public"],
 )
 
-...
-
+py_library(
+    name="string_utils"
+    srcs=["src/string_utils.py"]
+    visibility=["//visibility:public"],
+)
 # Define unit tests
 py_test(
     name = "test_math_utils",
@@ -15,8 +18,11 @@ py_test(
         ":math_utils",
     ],
 )
-
-...
+py_test(
+    name="test_string_utils",
+    srcs=["tests/test_string_utils.py"]
+    deps=[":string_utils"],
+)
 
 # Linting with pylint
 sh_test(
@@ -24,4 +30,7 @@ sh_test(
     srcs = ["scripts/lint.sh"],
 )
 
-... 
+sh_test(
+    name="format"
+    srcs=["scripts/format.sh"],
+)
