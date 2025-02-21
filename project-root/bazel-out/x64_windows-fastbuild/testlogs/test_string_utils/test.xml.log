@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\nurja\AppData\Local\Temp\Bazel.runfiles_1wefmqjt\runfiles\_main\tests\test_string_utils.py", line 1, in <module>
+    import pytest
+ModuleNotFoundError: No module named 'pytest'

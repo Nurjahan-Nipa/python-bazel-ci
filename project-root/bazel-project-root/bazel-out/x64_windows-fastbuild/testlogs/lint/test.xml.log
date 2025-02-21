@@ -1,0 +1,14 @@
+Requirement already satisfied: pylint in c:\users\nurja\anaconda3\lib\site-packages (3.3.4)
+Requirement already satisfied: dill>=0.2 in c:\users\nurja\anaconda3\lib\site-packages (from pylint) (0.3.9)
+Requirement already satisfied: platformdirs>=2.2.0 in c:\users\nurja\anaconda3\lib\site-packages (from pylint) (3.10.0)
+Requirement already satisfied: astroid<=3.4.0-dev0,>=3.3.8 in c:\users\nurja\anaconda3\lib\site-packages (from pylint) (3.3.8)
+Requirement already satisfied: isort!=5.13.0,<7,>=4.2.5 in c:\users\nurja\anaconda3\lib\site-packages (from pylint) (6.0.0)
+Requirement already satisfied: mccabe<0.8,>=0.6 in c:\users\nurja\anaconda3\lib\site-packages (from pylint) (0.7.0)
+Requirement already satisfied: tomli>=1.1.0 in c:\users\nurja\anaconda3\lib\site-packages (from pylint) (2.0.1)
+Requirement already satisfied: tomlkit>=0.10.1 in c:\users\nurja\anaconda3\lib\site-packages (from pylint) (0.13.2)
+Requirement already satisfied: colorama>=0.4.5 in c:\users\nurja\anaconda3\lib\site-packages (from pylint) (0.4.6)
+Requirement already satisfied: typing-extensions>=4.0.0 in c:\users\nurja\anaconda3\lib\site-packages (from astroid<=3.4.0-dev0,>=3.3.8->pylint) (4.11.0)
+************* Module src/*.py
+src/*.py:1:0: F0001: No module named src/*.py (fatal)
+************* Module tests/*.py
+tests/*.py:1:0: F0001: No module named tests/*.py (fatal)

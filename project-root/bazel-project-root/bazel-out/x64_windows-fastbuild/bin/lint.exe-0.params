@@ -1,0 +1,5 @@
+binary_type=Bash
+workspace_name=_main
+symlink_runfiles_enabled=0
+bash_bin_path=C:/Program Files/Git/usr/bin/bash.exe
+bash_file_rlocationpath=_main/lint
