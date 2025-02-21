@@ -31,6 +31,6 @@ sh_test(
 )
 
 sh_test(
-    name="format"
+    name="format",
     srcs=["scripts/format.sh"],
 )
