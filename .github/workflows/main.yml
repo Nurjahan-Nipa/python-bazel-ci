@@ -1,0 +1,59 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-test-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set Up Bazel
+        uses: bazelbuild/setup-bazelisk@v2
+
+      - name: Ensure Bazel Workspace Exists
+        working-directory: python-bazel-ci  # Ensure we run inside the correct directory
+        run: |
+          if [ ! -f WORKSPACE ] && [ ! -f MODULE.bazel ]; then
+            echo "ERROR: Bazel workspace not found in python-bazel-ci!" >&2
+            exit 1
+          fi
+        shell: bash
+
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install Dependencies
+        working-directory: python-bazel-ci
+        run: |
+          pip install pylint black pytest
+
+      - name: Run Unit Tests
+        working-directory: python-bazel-ci
+        run: bazel test //tests:test_math_utils //tests:test_string_utils
+
+      - name: Run Black Formatter Check
+        working-directory: python-bazel-ci
+        run: black --check --exclude 'external|bazel-|third_party' .
+        
+      - name: Run Pylint
+        working-directory: python-bazel-ci
+        run: pylint tests src  
+
+      - name: Run Formatter Check
+        working-directory: python-bazel-ci
+        run: bazel test //:format
+
+      - name: Run Linter Check
+        working-directory: python-bazel-ci
+        run: bazel test //:lint
