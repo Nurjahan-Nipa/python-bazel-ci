@@ -6,8 +6,13 @@
 #
 astroid==3.3.8
     # via pylint
+black==25.1.0
+    # via -r requirements.txt
+click==8.1.8
+    # via black
 colorama==0.4.6
     # via
+    #   click
     #   pylint
     #   pytest
 dill==0.3.9
@@ -20,10 +25,18 @@ isort==6.0.1
     # via pylint
 mccabe==0.7.0
     # via pylint
+mypy-extensions==1.0.0
+    # via black
 packaging==24.2
-    # via pytest
+    # via
+    #   black
+    #   pytest
+pathspec==0.12.1
+    # via black
 platformdirs==4.3.6
-    # via pylint
+    # via
+    #   black
+    #   pylint
 pluggy==1.5.0
     # via pytest
 pylint==3.3.4
@@ -32,9 +45,12 @@ pytest==8.3.4
     # via -r requirements.txt
 tomli==2.2.1
     # via
+    #   black
     #   pylint
     #   pytest
 tomlkit==0.13.2
     # via pylint
 typing-extensions==4.12.2
-    # via astroid
+    # via
+    #   astroid
+    #   black
