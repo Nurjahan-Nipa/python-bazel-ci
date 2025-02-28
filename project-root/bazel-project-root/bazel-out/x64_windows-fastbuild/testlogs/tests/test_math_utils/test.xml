@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites>
-<testsuite name="tests/test_math_utils.exe" tests="1" failures="0" errors="0">
-<testcase name="tests/test_math_utils.exe" status="run" duration="7" time="7"></testcase>
-<system-out><![CDATA[Executing tests from //tests:test_math_utils
------------------------------------------------------------------------------
-]]></system-out>
-</testsuite>
-</testsuites>
