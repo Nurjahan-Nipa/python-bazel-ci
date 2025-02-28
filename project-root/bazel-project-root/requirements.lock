@@ -4,17 +4,37 @@
 #
 #    pip-compile --output-file=requirements.lock requirements.txt
 #
+astroid==3.3.8
+    # via pylint
 colorama==0.4.6
-    # via pytest
+    # via
+    #   pylint
+    #   pytest
+dill==0.3.9
+    # via pylint
 exceptiongroup==1.2.2
     # via pytest
 iniconfig==2.0.0
     # via pytest
+isort==6.0.1
+    # via pylint
+mccabe==0.7.0
+    # via pylint
 packaging==24.2
     # via pytest
+platformdirs==4.3.6
+    # via pylint
 pluggy==1.5.0
     # via pytest
+pylint==3.3.4
+    # via -r requirements.txt
 pytest==8.3.4
     # via -r requirements.txt
 tomli==2.2.1
-    # via pytest
+    # via
+    #   pylint
+    #   pytest
+tomlkit==0.13.2
+    # via pylint
+typing-extensions==4.12.2
+    # via astroid
