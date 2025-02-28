@@ -16,7 +16,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         
-       - name: Debug Directory Structure  # 🔹 New step to check folder structure
+      - name: Debug Directory Structure  # 🔹 New step to check folder structure
         run: ls -R
 
       - name: Set Up Bazel
