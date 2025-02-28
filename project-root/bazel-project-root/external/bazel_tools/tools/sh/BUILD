@@ -1,10 +1,10 @@
 exports_files([
     "sh_toolchain.bzl",
+    "sh_configure.bzl",
 ])
 
-alias(
+toolchain_type(
     name = "toolchain_type",
-    actual = "@rules_shell//shell:toolchain_type",
     visibility = ["//visibility:public"],
 )
 

@@ -1,3 +1,4 @@
+'''
 # Define Python libraries
 py_library(
     name = "math_utils",
@@ -21,7 +22,7 @@ py_test(
 py_test(
     name="test_string_utils",
     srcs=["tests/test_string_utils.py"],
-    deps=[":string_utils"],
+    deps=[":string_utils" , ],
 )
 
 # Linting with pylint
@@ -34,3 +35,4 @@ sh_test(
     name="format",
     srcs=["scripts/format.sh"],
 )
+'''

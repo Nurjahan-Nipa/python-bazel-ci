@@ -29,7 +29,7 @@
 #include <stdlib.h>
 
 #include <cassert>
-#include <memory>
+#include <memory>  // unique_ptr
 
 #include "src/main/cpp/util/exit_code.h"
 
@@ -271,7 +271,12 @@ void StringPrintf(string *str, const char *format, ...) {
   delete[] buf;
 }
 
-string ToLower(const string &str) {
+void ToLower(string *str) {
+  assert(str);
+  *str = AsLower(*str);
+}
+
+string AsLower(const string &str) {
   if (str.empty()) {
     return "";
   }

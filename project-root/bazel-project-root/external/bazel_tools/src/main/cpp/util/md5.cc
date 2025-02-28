@@ -39,9 +39,10 @@
 
 #include "src/main/cpp/util/md5.h"
 
-#include <stddef.h>
-#include <stdint.h>
-#include <string.h>
+#include <stddef.h>  // for offsetof
+#include <string.h>  // for memcpy
+
+#include <cinttypes>
 
 #if !_STRING_ARCH_unaligned
 #if defined(_LP64) || defined(_WIN64)

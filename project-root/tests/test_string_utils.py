@@ -1,4 +1,3 @@
-import pytest
 from src.string_utils import reverse_string, is_palindrome, count_vowels
 
 

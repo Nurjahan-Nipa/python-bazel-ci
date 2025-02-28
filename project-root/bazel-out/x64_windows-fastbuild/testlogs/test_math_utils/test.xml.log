@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "C:\Users\nurja\AppData\Local\Temp\Bazel.runfiles_gnm62lbv\runfiles\_main\tests\test_math_utils.py", line 1, in <module>
-    import pytest
-ModuleNotFoundError: No module named 'pytest'

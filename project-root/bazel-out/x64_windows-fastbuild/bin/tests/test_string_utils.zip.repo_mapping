@@ -1,0 +1,4 @@
+,python-bazel-ci,_main
+,python_3_12_8_x86_64-pc-windows-msvc,python_3_12_8_x86_64-pc-windows-msvc
+python_3_12_8_x86_64-pc-windows-msvc,python-bazel-ci,_main
+rules_python,python-bazel-ci,_main

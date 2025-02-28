@@ -149,8 +149,6 @@ message FailureDetail {
     DiffAwareness diff_awareness = 182;
     ModCommand mod_command = 183;
     BuildReport build_report = 184;
-    Skyfocus skyfocus = 185;
-    RemoteAnalysisCaching remote_analysis_caching = 186;
   }
 
   reserved 102; // For internal use
@@ -372,40 +370,12 @@ message BuildReport {
   // failed to be written.
 }
 
-// Failure details for errors produced when using Skyfocus
-message Skyfocus {
-  enum Code {
-    // The defined working set cannot be used for the focused targets. For
-    // example, this happens when the intersection of the working set and the
-    // transitive closure of the focused target is empty.
-    INVALID_WORKING_SET = 0 [(metadata) = { exit_code: 2 }];
-    // The user needs to augment their working set to include the new file(s).
-    NON_WORKING_SET_CHANGE = 1 [(metadata) = { exit_code: 2 }];
-    CONFIGURATION_CHANGE = 2 [(metadata) = { exit_code: 2 }];
-    DISALLOWED_OPERATION_ON_FOCUSED_GRAPH = 3 [(metadata) = { exit_code: 2 }];
-  }
-
-  Code code = 1;
-}
-
-// Failure details for errors produced during remote analysis caching.
-message RemoteAnalysisCaching {
-  enum Code {
-    REMOTE_ANALYSIS_CACHING_UNKNOWN = 0 [(metadata) = { exit_code: 1 }];
-    SERIALIZED_FRONTIER_PROFILE_FAILED = 1 [(metadata) = { exit_code: 1 }];
-    PROJECT_FILE_NOT_FOUND = 2 [(metadata) = { exit_code: 2 }];
-  }
-
-  Code code = 1;
-}
-
 message PackageOptions {
   enum Code {
     reserved 2, 3;  // For internal use
 
     PACKAGE_OPTIONS_UNKNOWN = 0 [(metadata) = { exit_code: 37 }];
     PACKAGE_PATH_INVALID = 1 [(metadata) = { exit_code: 2 }];
-    NONSINGLETON_PACKAGE_PATH = 4 [(metadata) = { exit_code: 2 }];
   }
 
   Code code = 1;
@@ -541,9 +511,8 @@ message Filesystem {
     DEFAULT_DIGEST_HASH_FUNCTION_INVALID_VALUE = 6
         [(metadata) = { exit_code: 2 }];
     FILESYSTEM_JNI_NOT_AVAILABLE = 8 [(metadata) = { exit_code: 36 }];
-    FAILED_TO_LOCK_INSTALL_BASE = 12 [(metadata) = { exit_code: 36 }];
 
-    reserved 7, 9, 10; // For internal use
+    reserved 7; // For internal use
   }
 
   Code code = 1;
@@ -652,8 +621,6 @@ message BuildConfiguration {
     // command-line error exit code 2.
     INVALID_OUTPUT_DIRECTORY_MNEMONIC = 11 [(metadata) = { exit_code: 2 }];
     CONFIGURATION_DISCARDED_ANALYSIS_CACHE = 12 [(metadata) = { exit_code: 2 }];
-    // Failure modes specific to PROJECT.scl files.
-    INVALID_PROJECT = 13 [(metadata) = { exit_code: 2 }];
   }
 
   Code code = 1;
@@ -963,9 +930,6 @@ message DumpCommand {
     ACTION_GRAPH_DUMP_FAILED = 4 [(metadata) = { exit_code: 7 }];
     STARLARK_HEAP_DUMP_FAILED = 5 [(metadata) = { exit_code: 8 }];
      reserved 6; // For internal use
-    SKYFRAME_MEMORY_DUMP_FAILED = 7 [(metadata) = { exit_code: 7 }];
-    // deprecated, moved to the RemoteAnalysisCaching message.
-    reserved 8;
   }
 
   Code code = 1;
@@ -1082,13 +1046,8 @@ message ActionRewinding {
   enum Code {
     ACTION_REWINDING_UNKNOWN = 0 [(metadata) = { exit_code: 37 }];
     LOST_INPUT_TOO_MANY_TIMES = 1 [(metadata) = { exit_code: 1 }];
+    LOST_INPUT_IS_SOURCE = 2 [(metadata) = { exit_code: 1 }];
     REWIND_LOST_INPUTS_PREREQ_UNMET = 3 [(metadata) = { exit_code: 2 }];
-    LOST_OUTPUT_TOO_MANY_TIMES = 4 [(metadata) = { exit_code: 1 }];
-    LOST_INPUT_REWINDING_DISABLED = 5 [(metadata) = { exit_code: 1 }];
-    LOST_OUTPUT_REWINDING_DISABLED = 6 [(metadata) = { exit_code: 1 }];
-    // Deprecated: attempting to rewind a source artifact is now a hard crash.
-    DEPRECATED_LOST_INPUT_IS_SOURCE = 2
-        [(metadata) = { exit_code: 1 }, deprecated = true];
   }
 
   Code code = 1;
@@ -1304,7 +1263,6 @@ message PackageLoading {
     SYMLINK_CYCLE_OR_INFINITE_EXPANSION = 30 [(metadata) = { exit_code: 1 }];
     OTHER_IO_EXCEPTION = 31 [(metadata) = { exit_code: 36 }];
     BAD_REPO_FILE = 32 [(metadata) = { exit_code: 1 }];
-    BAD_IGNORED_DIRECTORIES = 33 [(metadata) = { exit_code: 1 }];
   }
 
   Code code = 1;
@@ -1374,7 +1332,6 @@ message ModCommand {
     TOO_MANY_ARGUMENTS = 2 [(metadata) = { exit_code: 2 }];
     INVALID_ARGUMENTS = 3 [(metadata) = { exit_code: 2 }];
     BUILDOZER_FAILED = 4 [(metadata) = { exit_code: 2 }];
-    ERROR_DURING_GRAPH_INSPECTION = 5 [(metadata) = { exit_code: 2 }];
   }
 
   Code code = 1;

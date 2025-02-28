@@ -16,7 +16,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "absl/strings/str_split.h"
+#include "third_party/absl/strings/str_split.h"
 
 namespace bazel {
 namespace tools {

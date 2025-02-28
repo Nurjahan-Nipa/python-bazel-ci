@@ -1,5 +1,5 @@
-load(":launcher_maker_test.bzl", "launcher_maker_test")
 load(":win_rules.bzl", "win_cc_binary", "win_cc_library")
+load(":launcher_maker_test.bzl", "launcher_maker_test")
 
 filegroup(
     name = "srcs",
