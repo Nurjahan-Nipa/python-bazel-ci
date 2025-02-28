@@ -1,5 +1,7 @@
 """Importing necessary functions"""
+
 from src.string_utils import reverse_string, is_palindrome, count_vowels
+
 
 def test_reverse_string():
     """
@@ -18,8 +20,12 @@ def test_is_palindrome():
     """
     assert is_palindrome("racecar") is True
     assert is_palindrome("hello") is False
-    assert is_palindrome("A man a plan a canal Panama") is True  # Handles spaces and case
-    assert is_palindrome("No lemon, no melon") is True  # Palindrome with punctuation removed
+    assert (
+        is_palindrome("A man a plan a canal Panama") is True
+    )  # Handles spaces and case
+    assert (
+        is_palindrome("No lemon, no melon") is True
+    )  # Palindrome with punctuation removed
     assert is_palindrome(" ") is True  # Edge case: Single space is a palindrome
     assert is_palindrome("") is True  # Edge case: Empty string is a palindrome
 
